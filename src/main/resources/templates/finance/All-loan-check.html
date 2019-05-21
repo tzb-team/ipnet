@@ -1,0 +1,314 @@
+<!doctype html>
+<!--[if lt IE 7 ]>
+<html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>
+<html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="stylesheet" href="/finance/basic/css/style.css">
+    <link rel="stylesheet" href="/finance/basic/css/bootstrap.css">
+    <link rel="stylesheet" href="/common/jquery-confirm.css">
+    <link rel="stylesheet" type="text/css" href="/ipnet_Login_v2/css/component.css"/>
+    <link rel="stylesheet" type="text/css" href="/ipnet_Login_v2/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <title>专利质押借款合同</title>
+
+    <style>
+        .input-class {
+            width: 160px
+        }
+    </style>
+    <script src="/common/jquery.js"></script>
+
+</head>
+
+<body>
+<a id="link" style="display:none" href="https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/authorize?response_type=code&client_id=9f00e22b-70ba-4321-9141-e97a7ed74382&scope=payees&countryCode=US&businessCode=GCB&locale=en_US&state=12093&redirect_uri=http://localhost:8000/ipnet/loading"></a>
+<a id="bankLink" style="display:none" href="https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/authorize?countryCode=US&businessCode=GCB&locale=en_US&state=12093&response_type=code&scope=payees&client_id=c8509f66-9298-4713-a229-37b4a01d7e50&redirect_uri=http://localhost:8000/ipnet/Bank-applicationFinish"></a>
+<div class="md-modal md-effect-10" id="modal-3">
+    <div class="md-content">
+        <h4>个人身份认证</h4>
+        <div class="md-maincontent">
+            <br/>
+            <span><i class="fa fa-key"></i>密钥： <input type="password" width="200px" id="key"></span><br/><br/>
+            <!--<span class="t1">开户银行： <input type="text" id="Ew_newBankCard_bank"></span><br /><br />-->
+            <button class="md-confirm" id="confirm">确认</button>
+            <button class="md-cancel" id="cancel">取消</button>
+        </div>
+    </div>
+</div>
+<div class="manage-modal">
+    <div class="flipbook-viewport">
+        <div class="container">
+            <div class="flipbook">
+                <div>
+                    <!--<div class="fm-top">-->
+                    <!--<p>甲方合同编号：<span>HZ1213134864</span></p>-->
+                    <!--<p>乙方合同编号：<span>HZ4562312151</span></p>-->
+                    <!--</div>-->
+                    <div class="fm-title">专利质押借款合同
+                    </div>
+
+                    <div class="fm-sign">
+                        <label>出质人（甲方）：
+                        </label>
+                        <input class="System patentHolder input-class fm-input" type="text">
+                    </div>
+                    <div class="fm-sign">
+                        <label>通讯地址
+                        </label>
+                        <input class="System address input-class fm-input" type="text">
+                    </div>
+                    <div class="fm-sign">
+                        <label>法定代表人:
+                        </label>
+                        <input class="System patentHolder input-class fm-input" type="text">
+                    </div>
+                    <div class="fm-sign">
+                        <label>质权人（乙方）：
+                        </label>
+                        <input class="System bank-name input-class fm-input" type="text">
+                    </div>
+                    <div class="fm-sign">
+                        <label>通讯地址：
+                        </label>
+                        <input class="System bank-address input-class fm-input" type="text">
+                    </div>
+                    <!--<div class="fm-footer">-->
+                    <!--<p>中华人民共和国专利局监制</p>-->
+                    <!--</div>-->
+                </div>
+                <div>
+                    <!--<div class="fm-top">-->
+                    <!--<p>甲方合同编号：<span>HZ1213134864</span></p>-->
+                    <!--<p>乙方合同编号：<span>HZ4562312151</span></p>-->
+                    <!--</div>-->
+                    <div class="fm-sign">
+                        <label>法定代表人:
+                        </label>
+                        <input class="System bank-name input-class fm-input" type="text">
+                    </div>
+                    <div class="fm-sign">
+                        <label>登记日期：
+                        </label>
+                        <input class="System date input-class fm-input" type="text">
+                    </div>
+                    <div class="fm-sign">
+                        <label>签订地点:
+                        </label>
+                        <input class="System place input-class fm-input" type="text">
+                    </div>
+                    <div class="fm-sign">
+                        <label>质押期限：
+                        </label>
+                        <input style="width:200px" class="System duration input-class fm-input" type="text">
+                    </div>
+                    <p>为确保债务的偿还，甲方愿意以其有权处分的财产作质押，乙方经审查，同意接受甲方的财产质押，甲、乙双方根据有关法律规定，经协商一致，约定如下条款：</p>
+                    <!--<div class="fm-footer">-->
+                    <!--<p>中华人民共和国专利局监制</p>-->
+                    <!--</div>-->
+                </div>
+                <div>
+                    <div class="manage-page">
+                        <p>专利：<input class="System patent input-class fm-input" type="text"></p>
+                        <p>评估价值：<input class="System evaluation input-class fm-input" type="number">元</p>
+                        <p>
+                            第一条 甲方以“质押财产清单”（附后）所列之财产设定质押。
+                        </p>
+                        <p>第二条 甲方质押担保的贷款金额<input class="Bank loan input-class fm-input" type="text">元，贷款期限<input
+                                style="width:200px" class="System duration input-class fm-input" type="text">。</p>
+                        <p> 第三条 甲方保证对质押物依法享有完全的所有权。</p>
+                        <p> 第四条 甲方应将质押财产产付乙方占有并同时向乙方支付保管费<input
+                                class="Bank-money input-class fm-input" type="number">元。 
+
+                        </p>
+                        <p> 第五条 质押担保的范围：贷款金额<input class="Bank loan input-class fm-input" type="number">元，及利息、违约金（包括罚息）、赔偿金、质物保管费用及实现贷款债权和质权的费用（包括诉讼费、律师费等）。 
+                        </p>
+                        <p> 第六条 本合同项下有关的评估、鉴定、保险、保管、运输等费用均由甲方承担。 </p>
+                        <p> 第七条 质押期间，<input class="System patentHolder input-class fm-input" type="text">方有维持专利权有效的义务，负责交纳专利年费，处理专利纠纷等事务。
+                        </p>
+                        <p> 第八条 甲方应负责质押财产在质押期间的财产保险。财产保险的第一受益人为乙方。保险单证由乙方代为保管。
+                        </p>
+                        <p> 第九条 质押期间，质押财产如发生投保范围的损失，或者因第三人的行为导致质押财产价值减少的，保险赔偿金或损害赔偿金应作为质押财产，存入乙方指定的帐户，质押期间双方均不得动用。
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="manage-page">
+                        <p> 第十条 非因乙方过错致质押财产价值减少，甲方应在向乙方提供与减少的价值相当的担保。
+                        </p>
+                        <p> 第十一条 质押期间，质押财产造成环境污染或造成其他损害，应由甲方独立承担责任。
+                        </p>
+                        <p> 第十二条 质押期间，未经乙方书面同意，甲方不得赠与、迁移、出租、转让、再抵押（质押）或以其他任何方式处分本合同项下质押财产。
+                        </p>
+                        <p> 第十三条 质押期间，经乙方书面同意，甲方转让质押财产所得的价款应先优用于向乙方提前清偿其所担保的债权。 
+                        </p>
+                        <p> 第十四条 借款合同履行期限届满，借款人未能清偿债务，乙方有权以质押财产折价或以拍卖、变卖、兑现质押财产所得的价款优先受偿，实现质权。
+
+                        </p>
+                        <p> 第十五条 发生下列情况之一，乙方有权提前处分质押财产实现质权、停止发放借款合同项下贷款或者提前收回借款合同项下已发放的贷款本息。 
+                        </p>
+                        <p> （1）甲方被宣告破产或被解散；
+                        </p>
+                        <p>（2）甲方违反本合同第八条、第十条、第十二条、第十三条的约定或发生其他严重违约行为；</p>
+                        <p>
+                            （3）借款合同履行期间借款人被宣告破产、被解散、擅自变更企业体制至乙方贷款债权落空、改变贷款用途、卷入或即将卷入重大的诉讼（或仲裁）程序、发生其他足以影响其偿债能力或缺乏偿债诚意的行为等情况。</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="manage-page">
+                        <p> 第十六条 甲方因隐瞒质押财产存在共有、争议、被查封、被扣压或已设定抵押权等情况而给乙方造成经济损失的，应向乙方支付借款合同项下贷款金额<input
+                                class="Bank compensation input-class fm-input" type="number">％的违约金，违约金不足以弥补乙方损失的，甲方还应就不足部分予以赔偿。乙方有权就违约金、赔偿金直接与甲方存款帐户中的资金予以抵销。
+                        </p><h4> 三、各方职责
+                    </h4>
+                        <p> 第十七条 乙方贪污处分质押财产所得的价款，按下列顺序分配： 
+
+                        </p>
+                        <p> （1）支付处分质押财产所需的费用； 
+
+                        </p>
+                        <p> （2）清偿借款人所欠乙方贷款利息； 
+                        </p>
+                        <p> （3）清偿借款人所欠乙方贷款本金、违约金（包括罚息）和赔偿金等；
+                        </p>
+                        <p> （4）支付其他费用。 
+
+                        </p>
+                        <p> 如果甲方同时与保险公司签订专利质押保险合同，则第十四条中，未能清偿部分由保险公司全部赔偿，质押权移交保险公司<input
+                                class="System insurance input-class fm-input" type="text">。
+                        </p>
+                        <p> 第十九条 因本合同发生的争议，经协商解决达不成一致意见，应当向人民法院提起诉讼。
+                        </p>
+                        <p> （第二十条 本合同应由双方法定代表人（或其授权代理人）签字并加盖公章。
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="manage-page" id="signPage">
+                        <p class="page-title wrap">
+                            签字页
+                        </p>
+                        <div class="party party-a" style="width:300px;height: 100%">
+                            <div style="height: 182px">
+                                <div class="fm-sign">
+                                    <!--<p class="wrap">(甲方盖章)</p>-->
+                                    <!--<button class="seal">盖章</button>-->
+                                    <!--<button class="qx-seal">取消</button>-->
+                                </div>
+                                <div id="a" class="box" style="display: block;margin-top: 0px;margin-bottom: 5px">
+                                    <span class="letter1"></span>
+                                    <span class="letter2"></span>
+                                    <span class="letter3"></span>
+                                    <span class="letter4"></span>
+                                    <span class="letter5"></span>
+                                    <span class="letter6"></span>
+                                    <span class="letter7"></span>
+                                    <span class="letter8"></span>
+                                    <span class="letter9"></span>
+                                    <span class="letter10"></span>
+                                    <span class="letter11"></span>
+                                    <span class="letter12"></span>
+                                    <span class="letter13"></span>
+                                </div>
+                            </div>
+
+                            <div class="fm-sign">
+                                <label>签订日期:</label>
+                                <input class="input-class year" type="number" style="width: 45px">年
+                                <input class="input-class month" type="number" style="width: 30px">月
+                                <input class="input-class currentDay" type="number" style="width: 30px">日
+                            </div>
+                            <!--<button id="submit" class="btn btn-default">签字上链</button>-->
+                            <button data-modal="modal-3" class="md-trigger btn btn-default">签字上链</button>
+                        </div>
+                        <!--<div class="party party-b" style="height: 100%">-->
+
+
+                        <!--<div class="fm-sign">-->
+                        <!--<label>签订日期:</label>-->
+                        <!--<input class="input-class year" type="number" style="width: 45px">年-->
+                        <!--<input class="input-class month" type="number" style="width: 30px">月-->
+                        <!--<input class="input-class currentDay" type="number" style="width: 30px">日-->
+                        <!--</div>-->
+                        <!--<button data-modal="modal-3" class="md-trigger btn btn-default">签字上链</button>-->
+                        <!--</div>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <button class="prev-btn"></button>
+        <button class="next-btn"></button>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="/finance/basic/extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="/finance/basic/extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript">
+    function loadApp() {
+        $('.flipbook').turn({
+            width: 914,
+            height: 643,
+            elevation: 500,
+            gradients: true,
+            autoCenter: true
+
+        });
+    }
+
+    yepnope({
+        test: Modernizr.csstransforms,
+        yep: ['/finance/basic/lib/turn.js'],
+        nope: ['/finance/basic/lib/turn.html4.min.js'],
+        both: ['/finance/basic/css/basic.css'],
+        complete: loadApp
+    });
+
+    $(".prev-btn").on("click", function (event) {
+        $(".flipbook").turn("previous");
+    });
+    //上一页按钮
+    $(".next-btn").on("click", function (event) {
+        $(".flipbook").turn("next");
+    });
+
+    $('.seal').on('click', function () {
+        var str = '可以自定义公司名称'; //假设公司名称
+        var letter = str.split('');
+        var o = 7 - Math.floor(letter.length / 2);
+        $(this).parent().siblings('.box').children('span').html();
+        for (var i = 0; i < letter.length; i++) {
+            $(this).parent().siblings('.box').children('span').eq(o + i).html(letter[i]);
+        }
+        $(this).hide().siblings('.qx-seal').show().parent().siblings('.box').show();
+    })
+
+    $('.qx-seal').on('click', function () {
+        $(this).hide().siblings('.seal').show().parent().siblings('.box').hide();
+    })
+
+    $('.disabled').find('input').attr('disabled', 'disabled');
+    $('.disabled').find('.seal').attr('disabled', 'disabled');
+
+
+</script>
+<script type="text/javascript" src="/common/jquery-confirm.js"></script>
+<script type="text/javascript" src="/finance/js/alertFile.js"></script>
+<script src="/ipnet_Login_v2/js/classie.js"></script>
+<script src="/ipnet_Login_v2/js/modalEffects.js"></script>
+<script src="/finance/js/All/All-contract.js"></script>
+</body>
+</html>
