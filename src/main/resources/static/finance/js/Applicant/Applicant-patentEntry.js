@@ -15,6 +15,7 @@ $('#submit').on('click', function () {
         var profile = $("#profile").val();
         var userId = storage.getItem('user_id');
         console.log(userId);
+        console.log(type);
         // console.log(type);
 
 
@@ -34,6 +35,7 @@ $('#submit').on('click', function () {
                 profile: profile
             },
             success: function () {
+                console.log("专利数据录入成功");
                 patentBlockChain(patentID,userId);
                 storage.removeItem('fileURL');
                 storage.removeItem('uploadImageURL');
@@ -43,6 +45,7 @@ $('#submit').on('click', function () {
                 }, 2000);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
                 console.log(XMLHttpRequest.status + ":" + XMLHttpRequest.statusText);
             }
         });
