@@ -19,6 +19,31 @@ var oUsername = "";
 var oPassword = "";
 var oRole = "";
 
+window.onload = function () { 
+    tabRegisterEmail(0); 
+    if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+        if (web3.currentProvider.isMetaMask == true) {
+            console.log("MetaMask可用");
+        } else {
+            console.log("非MetaMask环境");
+        }
+    } else {
+        console.log("No web3? 需要安装<a href='https://metamask.io/'>MetaMask</a>!");
+    }
+
+    web3.eth.getAccounts(function (err, accounts) {
+        console.log(accounts);
+        if (accounts.length == 0) {
+            console.log("请检查钱包是否解锁");
+        } else {
+            console.log('钱包已经解锁');
+        }
+        console.log(web3.eth.defaultAccount);
+    });
+
+    
+}
 
 function tabRegisterEmail(num){
     var aInput=document.getElementsByTagName('input');  //默认为 num = 0 的情况
