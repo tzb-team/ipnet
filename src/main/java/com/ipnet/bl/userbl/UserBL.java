@@ -300,7 +300,8 @@ public class UserBL implements UserBLService{
             File file = new File(filePath);
             String fileName =  WalletUtils.generateNewWalletFile("123456", file, true);
             System.out.println(fileName);
-            Credentials credentials = WalletUtils.loadCredentials("123456",file);
+            File wa = new File(filePath+"/"+fileName);
+            Credentials credentials = WalletUtils.loadCredentials("123456",wa);
 
             System.out.println(credentials.getAddress());//保存你的加密文件信息
 
@@ -314,6 +315,8 @@ public class UserBL implements UserBLService{
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (NoSuchProviderException e) {
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
 
