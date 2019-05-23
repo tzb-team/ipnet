@@ -19,7 +19,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.web3j.crypto.CipherException;
+import org.web3j.crypto.Credentials;
+import org.web3j.crypto.WalletUtils;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.methods.response.Web3ClientVersion;
+import org.web3j.protocol.http.HttpService;
 
+import java.io.File;
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -264,6 +275,50 @@ public class UserBL implements UserBLService{
 
     @Override
     public ResultMessage loginEmail(String email, String password) {
+        Web3j web3 = Web3j.build(new HttpService("http://localhost:7545/"));
+
+        Web3ClientVersion web3ClientVersion;
+
+        try {
+
+            web3ClientVersion = web3.web3ClientVersion().send();
+
+            String clientVersion = web3ClientVersion.getWeb3ClientVersion();
+
+            System.out.println(clientVersion);
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+
+        String filePath = "D:/picture";
+
+        try {
+            File file = new File(filePath);
+            String fileName =  WalletUtils.generateNewWalletFile("123456", file, true);
+            System.out.println(fileName);
+            Credentials credentials = WalletUtils.loadCredentials("123456",file);
+
+            System.out.println(credentials.getAddress());//保存你的加密文件信息
+
+
+        } catch (CipherException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InvalidAlgorithmParameterException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchProviderException e) {
+            e.printStackTrace();
+        }
+
+
+
         Optional<CompanyUser> c_user= companyUserDao.findById(email);
         Optional<PersonalUser> p_user= personalUserDao.findById(email);
         if(c_user.isPresent()){//该用户是企业用户
