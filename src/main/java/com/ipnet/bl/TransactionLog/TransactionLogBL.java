@@ -3,12 +3,14 @@ package com.ipnet.bl.TransactionLog;
 import com.ipnet.blservice.TransactionLogService;
 import com.ipnet.dao.TransactionDao;
 import com.ipnet.entity.Transaction;
+import com.ipnet.vo.TransactionVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -42,4 +44,33 @@ public class TransactionLogBL implements TransactionLogService{
         }
         return transactions;
     }
+
+    @Override
+    public List<TransactionVO> getTransById(long transId) {
+        try{
+            List<TransactionVO> trans = new ArrayList<>();
+            this.transactionDao.findByTransId(transId).forEach(transaction -> {
+                trans.add(transaction.toVO());
+            });
+            return trans;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<TransactionVO> getTransByPatentId(String patentId) {
+        try{
+            List<TransactionVO> trans = new ArrayList<>();
+            this.transactionDao.findByPatentId(patentId).forEach(transaction -> {
+                trans.add(transaction.toVO());
+            });
+            return trans;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

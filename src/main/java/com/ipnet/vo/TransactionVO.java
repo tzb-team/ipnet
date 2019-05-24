@@ -22,4 +22,5 @@ public class TransactionVO {
     private String transcation_time;  //交易时间
     private String patent_id;  //交易专利号
     private int IPPoint;   //ip豆
+
 }

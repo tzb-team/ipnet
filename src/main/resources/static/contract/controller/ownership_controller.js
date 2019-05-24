@@ -20,7 +20,7 @@ $(document).ready(function() {
                     icon: 'fa fa-info',
                     animation: 'zoom',
                     confirm: function () {
-
+                        //详见ownership_trade_contract.html
                     }
                 });
             }
