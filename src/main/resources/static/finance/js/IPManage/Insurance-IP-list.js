@@ -1,6 +1,8 @@
 //获取专利列表
 var storage = window.localStorage;
 var userId = storage.getItem('user_id');
+console.log(" dd"+localStorage.getItem("user_id"));
+$('.mike').text(localStorage.getItem("user_id"));
 $.ajax({
     type: "GET",
     url: "/all/getPatentList",

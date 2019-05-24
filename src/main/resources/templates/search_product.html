@@ -36,7 +36,12 @@
     <link rel="stylesheet" type="text/css" href="/frame/head/css/user_nav.css">
     <script type="text/javascript" src="/search/controller/search_product_controller.js"></script>
 
-
+    <script>
+        $(document).ready(function(){
+            console.log(" dd"+localStorage.getItem("user_id"));
+            $('.mike').text(localStorage.getItem("user_id"));
+        })
+    </script>
     <style type="text/css">
         .navbar-brand{
             padding: 29px 15px;
@@ -154,7 +159,7 @@
                                 <a href="javascript:void(0)" id="aPersonListPanel" class="tooltipped tooltipped__w" aria-label="您" style="position: absolute;left: 1140px;height: 27px;width: 27px;margin-top: 23px">
                                     <span class="avatar-small" style="background-image: url('https://i.imgur.com/ova4597.png')"></span>
                                 </a>
-                                <span style="position: absolute;left: 1170px;color: white;margin-top: 26px">Mike</span>
+                                <span style="position: absolute;left: 1170px;color: white;margin-top: 26px" class="mike">mike</span>
                             </div>
                         </nav>
                     </div>
@@ -192,7 +197,11 @@
             </div>
         </div>
         <script>
-
+            $(document).ready(function(){
+            
+            console.log(" dd"+localStorage.getItem("user_id"));
+            $('.mike').text=localStorage.getItem("user_id");
+            
             $(".free_requirment").hover(function(){
                 $(this).find(".one_btn_publish").show();
             },function(){
@@ -265,6 +274,7 @@
                     $(".formcontrol").attr('placeholder','请输入运营商关键字');
                 }
             }
+        })
         </script>
 
         <div class="banner search_parameter_p_url" style="background: transparent;height: 300px;">
