@@ -178,7 +178,7 @@ public class UserBL implements UserBLService{
                 //TODO: 获取钱包地址 walletAddress 等待测试
                 String address = blockChain.createWalletFile(register.getPassword());
                 newPersonalUser.setWalletAddress(address);
-                
+
                 personalUserDao.save(newPersonalUser);
                 communityUserBLService.addUser(register.getUsername());
                 return ResultMessage.Success;

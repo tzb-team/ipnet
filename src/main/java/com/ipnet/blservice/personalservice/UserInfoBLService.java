@@ -22,4 +22,6 @@ public interface UserInfoBLService {
     AccountInfoVo getAccountInfo (String userId,Role userType);
     //查看是否完成验证
     ResultMessage isUserValidate (String userId,Role userType);
+    //获得用户的钱包地址
+    String getWalletAddressById(String userid);
 }

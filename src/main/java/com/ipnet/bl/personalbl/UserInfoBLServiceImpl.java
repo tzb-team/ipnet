@@ -115,4 +115,17 @@ public class UserInfoBLServiceImpl implements UserInfoBLService {
         }
         return null;
     }
+
+    /**
+     * 获得用户的钱包地址
+     * @param userid
+     * @return
+     */
+    @Override
+    public String getWalletAddressById(String userid) {
+        PersonalUser user = userDao.findPersonalUserById(userid);
+        if (user!=null)
+            return user.getWalletAddress();
+        return null;
+    }
 }

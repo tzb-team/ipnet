@@ -176,4 +176,11 @@ public class UserInfoController {
     ResultMessage updatePoint(String userId,int point,Role userType){
         return electronicWalletBLService.updatePoint(userId,point,userType);
     }
+    //查看账户链上地址
+    @RequestMapping("/getWalletAddressById")
+    public @ResponseBody
+    String  getWalletAddressById(String userid){
+        return userBLService.getWalletAddressById(userid);
+    }
+
 }
