@@ -55,15 +55,15 @@ function showBankCardList(userID, userRole) {
         data: {userId: userID, userType: userRole},
         success: function (data) {
             if (data != null && data.length != 0) {
-                //console.log(data);
+                console.log(data);
                 var dlist = data;
                 var str = "";
-                str = "<span class=\"t2\"><table class=\"tb-12\"><tr><td class=\"tb-12-head\">银行卡卡号</td><td class=\"tb-12-head\">所在银行</td><td class=\"tb-12-head\">操作</td></tr><tr>";
+                str = "<span class=\"t2\"><table class=\"tb-12\"><tr><td class=\"tb-12-head\">银行卡卡号</td><td class=\"tb-12-head\">所在银行</td><td class=\"tb-12-head\">操作</td></tr>";
                 for (var i = 0; i < dlist.length; i++) {
-                    str = str + "<td>" + dlist[i].cardId + "</td><td>" + dlist[i].bank + "</td><td>" +
-                        "<a href=\"#\" id=\"btnCancel_" + dlist[i].cardId + "_" + dlist[i].bank + "\" onclick=\"cancelBankCard(this.id)\" style=\"color: #38a4f0;border-bottom: 1px solid #38a4f0;\">解绑</a></td>";
+                    str = str + "<tr><td>" + dlist[i].cardId + "</td><td>" + dlist[i].bank + "</td><td>" +
+                        "<a href=\"#\" id=\"btnCancel_" + dlist[i].cardId + "_" + dlist[i].bank + "\" onclick=\"cancelBankCard(this.id)\" style=\"color: #38a4f0;border-bottom: 1px solid #38a4f0;\">解绑</a></td></tr>";
                 }
-                str = str + "</tr></table></span>";
+                str = str + "</table></span>";
                 document.getElementById("Ew_bankCardInfoList").innerHTML = str;
             }
             else {
