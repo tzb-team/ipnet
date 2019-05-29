@@ -1,0 +1,73 @@
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "regPatent",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"type": "function",
+		"stateMutability": "nonpayable"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "patentid",
+				"type": "string"
+			},
+			{
+				"name": "newHolder",
+				"type": "address"
+			}
+		],
+		"name": "transaction",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"type": "function",
+		"stateMutability": "nonpayable"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"type": "constructor",
+		"stateMutability": "nonpayable"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "id",
+				"type": "string"
+			}
+		],
+		"name": "getPatentInfo",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"type": "function",
+		"stateMutability": "view"
+	}
+]
