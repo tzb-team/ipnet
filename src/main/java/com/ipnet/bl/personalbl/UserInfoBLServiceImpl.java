@@ -66,15 +66,11 @@ public class UserInfoBLServiceImpl implements UserInfoBLService {
             case PersonalUser:
                 CompanyUser companyUser=companyUserDao.findCompanyUserById(userId);
                 if(companyUser!=null)
-                    return new UserInfoVo(companyUser.getName(), null ,companyUser.getTel(),
-                            null,companyUser.getName(),companyUser.getAddress(),companyUser.getDescription()
-                    ,companyUser.getLicence());
+                    return companyUser.toInfoVO();
             case CompanyUser:
                 PersonalUser personalUser=userDao.findPersonalUserById(userId);
                 if(personalUser!=null){
-                    return new UserInfoVo(personalUser.getName(),personalUser.getSex(),personalUser.getTelephone(),
-                            personalUser.getIndustry(),personalUser.getCompany(),personalUser.getRegion(),personalUser.getDescription(),
-                            personalUser.getIdPhoto());
+                    return personalUser.toInfoVO();
                 }
         }
 

@@ -4,10 +4,7 @@ import com.ipnet.blservice.UserBLService;
 import com.ipnet.dao.PersonalUserDao;
 import com.ipnet.enums.ResultMessage;
 import com.ipnet.enums.Role;
-import com.ipnet.vo.uservo.CompanyVerify;
-import com.ipnet.vo.uservo.EmailRegister;
-import com.ipnet.vo.uservo.LoginReq;
-import com.ipnet.vo.uservo.PersonVerify;
+import com.ipnet.vo.uservo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -132,13 +129,13 @@ public class UserController {
     boolean personVerify(@RequestBody PersonVerify personVerify){
         return userBLService.personVerify(personVerify);
     }
+
     //企业信息认证
     @RequestMapping("companyVerify")
     public @ResponseBody
     boolean companyVerify(@RequestBody CompanyVerify companyVerify){
         return userBLService.companyVerify(companyVerify);
     }
-    //查看个人身份信息
     //查看企业身份信息
 
     //用户是否通过实名认证
