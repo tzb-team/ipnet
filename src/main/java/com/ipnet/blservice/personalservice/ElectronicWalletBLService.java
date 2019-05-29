@@ -8,7 +8,8 @@ import com.ipnet.vo.CreditCard;
 import java.util.List;
 
 /**
- * by nan
+ * @author SDJ
+ * @date 2019/5/30
  */
 public interface ElectronicWalletBLService {
     //查看账户余额
@@ -27,7 +28,6 @@ public interface ElectronicWalletBLService {
     ResultMessage cancelCreditCard(String uerId,String card,Role userType);
     //查看积分
     int getPoint(String userId,Role userType);
-
     ResultMessage updatePoint(String userId,int point,Role userType);
 
 }

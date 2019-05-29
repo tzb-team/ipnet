@@ -60,6 +60,7 @@ public class UserInfoBLServiceImpl implements UserInfoBLService {
 
     }
 
+    //身份信息查看
     @Override
     public UserInfoVo getUserInfo(String userId,Role userType) {
         switch(userType){

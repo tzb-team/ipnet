@@ -81,7 +81,7 @@ public class UserBL implements UserBLService{
         }
     }
 
-    /*
+    /* 验证使用电话进行注册时的验证码
     参数：key--value
           time--限制时间(之前后端传到前端的)
           hash--哈希值(之前后端传到前端的)
@@ -110,7 +110,7 @@ public class UserBL implements UserBLService{
     }
 
 
-    /*
+    /* 通过电话号码注册
     参数：key--value
           phoneNum--号码
           pass--密码
@@ -145,6 +145,11 @@ public class UserBL implements UserBLService{
         }
     }
 
+    /**
+     * 通过邮箱注册
+     * @param register
+     * @return
+     */
     @Override
     public ResultMessage personalEmailRegister(EmailRegister register) {
         if(personalUserDao.existsById(register.getUsername())|| companyUserDao.existsById(register.getUsername())){
@@ -189,6 +194,11 @@ public class UserBL implements UserBLService{
         }
     }
 
+    /**
+     * 企业注册
+     * @param register
+     * @return
+     */
     @Override
     public ResultMessage companyRegister(EmailRegister register) {
         if(personalUserDao.existsById(register.getUsername())|| companyUserDao.existsById(register.getUsername())){
@@ -228,6 +238,12 @@ public class UserBL implements UserBLService{
         }
     }
 
+    /**
+     * 验证邮箱
+     * @param email
+     * @param activeCode
+     * @return
+     */
     @Override
     public ResultMessage checkEmail(String email, String activeCode) {
         Optional<CompanyUser> c_user= companyUserDao.findById(email);
