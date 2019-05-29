@@ -263,8 +263,7 @@
                                     <div class="col-md-4">
                                         <!-- Short Description -->
                                         <p>
-                                            <span style="color: black;font-weight: bold">所属地区：&nbsp;</span>
-                                            <span id="patent_region"></span>
+                                            <span style="color: black;font-weight: bold">出售价格(¥)：&nbsp;</span>                                           <span id="patent_region"></span>
                                         </p>
                                     </div>
                                 </div>
@@ -612,10 +611,10 @@
 <script>
     $('#want_buy').on('click', function () {
         $.confirm({
-            title: '购买该专利',
-            content: '如需购买该专利需要与专利持有方进行洽谈咨询 <br> 若是双方已经达成一致条约，请点击下方草拟合同按钮进行合同草案的拟定',
-            confirmButton: '草拟合同',
-            cancelButton: '继续洽谈',
+            title: '',
+            content: '是否确认购买此专利?<br>一旦确认将直接完成购买请慎重考虑',
+            confirmButton: '我确认',
+            cancelButton: '再考虑...',
             confirmButtonClass: 'btn-info',
             icon: 'fa fa-question-circle',
             animation: 'rotate',
@@ -623,18 +622,45 @@
             opacity: 0.5,
             confirm: function () {
                 $.alert({
-                    title: '提交申请成功!',
-                    content: '请前往草拟合同',
-                    confirmButton: '我前往',
+                    title: '信息上链完成!',
+                    content: '哈希块0x781402bc0ef1140784f0de6b893f57c6a1f0b8<br>65078bfa7b00412b212663bca0',
+                    // confirmButton: '我前往',
                     confirmButtonClass: 'btn-primary',
                     icon: 'fa fa-info',
                     animation: 'zoom',
+                    //还会进行返回哈希块值
+
                     confirm:function(){
                         localStorage.setItem("write_or_agree","write");
                         window.location.href="ownership_trade_contract";
                     }
                 });
             }
+
+
+            // title: '',
+            // content: '如需购买该专利需要与专利持有方进行洽谈咨询 <br> 若是双方已经达成一致条约，请点击下方草拟合同按钮进行合同草案的拟定',
+            // confirmButton: '草拟合同',
+            // cancelButton: '继续洽谈',
+            // confirmButtonClass: 'btn-info',
+            // icon: 'fa fa-question-circle',
+            // animation: 'rotate',
+            // closeAnimation: 'right',
+            // opacity: 0.5,
+            // confirm: function () {
+            //     $.alert({
+            //         title: '提交申请成功!',
+            //         content: '请前往草拟合同',
+            //         confirmButton: '我前往',
+            //         confirmButtonClass: 'btn-primary',
+            //         icon: 'fa fa-info',
+            //         animation: 'zoom',
+            //         confirm:function(){
+            //             localStorage.setItem("write_or_agree","write");
+            //             window.location.href="ownership_trade_contract";
+            //         }
+            //     });
+            // }
         });
     });
 </script>
