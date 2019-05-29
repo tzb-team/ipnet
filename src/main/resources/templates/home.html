@@ -176,7 +176,37 @@
                                     <i class="fas fa-bell" style="color: white;font-size: 22px"></i>
                                 </a>
                                 <a href="javascript:void(0)" id="aPersonListPanel" class="tooltipped tooltipped__w" aria-label="您" style="position: absolute;left: 1140px;height: 27px;width: 27px;margin-top: 23px">
-                                    <span class="avatar-small" style="background-image: url('https://i.imgur.com/ova4597.png')"></span>
+                                   <span class="avatar-small" style="background-image: url('https://i.imgur.com/ova4597.png')"></span>
+                                    <button id="new_wallet_address" >点击此处生成钱包地址</button>
+                                    <script  type="text/javascript">
+                                        var btn=document.getElementById("new_wallet_address");
+                                        btn.onclick=function (ev) {
+                                            // var r=confirm(
+                                            //     "确定生成钱包地址？"
+                                            // );
+                                            // if (r){
+                                            //     alert("已为"+localStorage.getItem("user_id")+"生成钱包地址：0x10Ad2F4BB73e23e8B72C56b9EFdc3B7aD8Bb808E");
+                                            // }
+                                            $.ajax({
+                                                type: "GET",
+                                                url: "/getWalletAddressById",
+                                                data : {userid:userId},
+
+                                                success: function (data) {
+                                                    data=""
+                                                    var walletAddress=data;
+                                                    console.log(data);
+                                                    var message="";
+                                                    message+="确定生成钱包地址吗？";
+                                                    var r=confirm(message);
+                                                    if (r){
+                                                        var tex="已为"+username+"生成钱包地址："+"\n"+data;
+                                                        alert(tex);
+                                                    }
+                                                }
+                                            })
+                                        };
+                                    </script>
                                 </a>
                                 <span style="position: absolute;left: 1170px;color: white;margin-top: 24px" class="mike"></span>
                             </div>
@@ -208,12 +238,15 @@
                             <div id="form_search">
                                 <input type="hidden" value="0" id="flag" name="flag">
                                 <input type="text" value="" class="formcontrol" name="keyword" id="tags" placeholder="请输入专利名称关键字或专利号">
-                                <div class="formsousuo" id="search_btn" onclick="search_keyword()" style="background-color: #0a396d"></div>
+                                <div class="formsousuo"   style="background-color: #0a396d"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div >
+
         </div>
         <script>
 
@@ -224,7 +257,16 @@
             },function(){
                 $(this).find(".one_btn_publish").hide();
             })
-
+            $('#search_btn').on('click', function () {
+                            $.alert({
+                                title: '提交申请成功!',
+                                content: '请前往草拟合同',
+                                confirmButton: '我前往',
+                                confirmButtonClass: 'btn-primary',
+                                icon: 'fa fa-info',
+                                animation: 'zoom'
+                    });
+                });
             function Submit(type) {
                 if (type == "0") {
                     $("#flag").val(type);
@@ -754,6 +796,5 @@
 </div>
 <script type='text/javascript' src='/home/js/machothemes.min.js'></script>
 <script type='text/javascript' src='/home/js/functions.js'></script>
-
 </body>
 </html>
