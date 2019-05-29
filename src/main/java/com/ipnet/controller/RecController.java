@@ -21,6 +21,12 @@ public class RecController {
     @Autowired
     private RecBLService recBLService;
 
+    /**
+     *
+     * @param patent_id
+     * @param points
+     * @return
+     */
     @RequestMapping("/buyPatentRec")
     public @ResponseBody ResultMessage buyPatentRec(@RequestParam String patent_id, @RequestParam int points){
         return recBLService.buyPatentRec(patent_id,points);

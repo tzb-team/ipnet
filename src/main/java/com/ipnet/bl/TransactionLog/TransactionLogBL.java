@@ -39,20 +39,18 @@ public class TransactionLogBL implements TransactionLogService{
     @Override
     public List<Transaction> getAllTransactions() {
         List<Transaction> transactions = this.transactionDao.findAll();
-        if(transactions.size() == 0 || transactions ==null){
+        if(transactions ==null || transactions.size() == 0){
             return null;
         }
         return transactions;
     }
 
     @Override
-    public List<TransactionVO> getTransById(long transId) {
+    public TransactionVO getTransById(long transId) {
         try{
-            List<TransactionVO> trans = new ArrayList<>();
-            this.transactionDao.findByTransId(transId).forEach(transaction -> {
-                trans.add(transaction.toVO());
-            });
-            return trans;
+            TransactionVO tran = new TransactionVO();
+            tran = this.transactionDao.findByTransId(transId).toVO();
+            return tran;
         }catch (Exception e) {
             e.printStackTrace();
             return null;
