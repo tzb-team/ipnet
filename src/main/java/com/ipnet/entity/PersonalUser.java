@@ -3,6 +3,7 @@ package com.ipnet.entity;
 import com.ipnet.enums.Identity;
 import com.ipnet.enums.Industry;
 import com.ipnet.enums.Sex;
+import com.ipnet.vo.uservo.PersonalUserInfoVo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -53,5 +54,19 @@ public class PersonalUser {
     private int credits;//用户拥有的积分
     private double RMB;//用户平台上的人民币或点券（钱包？）
 
+    private String walletAddress;//用户的钱包地址
+
+    public PersonalUserInfoVo toInfoVO(){
+        PersonalUserInfoVo p = new PersonalUserInfoVo();
+        p.setName(name);
+        p.setGender(sex);
+        p.setPhone(telephone);
+        p.setProfession(industry);
+        p.setCompany(company);
+        p.setRegion(region);
+        p.setStatement(description);
+        p.setIDcard_img(idPhoto);
+        return p;
+    }
 
 }

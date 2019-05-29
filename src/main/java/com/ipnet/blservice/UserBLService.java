@@ -6,6 +6,7 @@ import com.ipnet.vo.financevo.Evaluator;
 import com.ipnet.vo.uservo.CompanyVerify;
 import com.ipnet.vo.uservo.EmailRegister;
 import com.ipnet.vo.uservo.PersonVerify;
+import com.ipnet.vo.uservo.UserInfoVo;
 
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,7 @@ public interface UserBLService {
     ResultMessage loginPhone(String telephone, String password);
     //邮箱登录,企业和个人都可以
     ResultMessage loginEmail(String email, String password);
-
+    //获得用户的角色
     Role getUserRole(String userID);
 
     //获取唯一一家评估机构的名字

@@ -9,6 +9,7 @@ import com.ipnet.entity.CompanyUser;
 import com.ipnet.entity.PersonalUser;
 import com.ipnet.enums.ResultMessage;
 import com.ipnet.enums.Role;
+import com.ipnet.utility.BlockChain;
 import com.ipnet.utility.MD5Util;
 import com.ipnet.vo.financevo.Evaluator;
 import com.ipnet.vo.uservo.CompanyVerify;
@@ -50,6 +51,8 @@ public class UserBL implements UserBLService{
     private CommunityUserBLService communityUserBLService;
     @Autowired
     private MD5Util md5Util;
+
+    private BlockChain blockChain = new BlockChain();
 
     @Value("${spring.mail.username}")
     private String fromEmail;
@@ -121,12 +124,17 @@ public class UserBL implements UserBLService{
         if(resultMessage.equals(ResultMessage.Success)){
             String phoneNum=request.get("phoneNum");
             PersonalUser newUser=new PersonalUser();
+
             newUser.setId(phoneNum);
             newUser.setPassword(request.get("pass"));
             newUser.setTelephone(phoneNum);
             newUser.setRegisterTime(new Date());
             newUser.setVerified(false);
             newUser.setActive(true);
+
+//            TODO: 获取钱包地址 walletAddress 等待测试
+            String address = blockChain.createWalletFile(request.get("pass"));
+            newUser.setWalletAddress(address);
 
             personalUserDao.save(newUser);
             //自动为用户生成社区用户的实体
@@ -166,6 +174,11 @@ public class UserBL implements UserBLService{
             newPersonalUser.setVerified(false);
 
             if(this.sendEmail(register.getUsername(),activeCode)){
+
+                //TODO: 获取钱包地址 walletAddress 等待测试
+                String address = blockChain.createWalletFile(register.getPassword());
+                newPersonalUser.setWalletAddress(address);
+                
                 personalUserDao.save(newPersonalUser);
                 communityUserBLService.addUser(register.getUsername());
                 return ResultMessage.Success;
@@ -360,6 +373,7 @@ public class UserBL implements UserBLService{
         }
     }
 
+    //获得用户的角色（动态获得）
     @Override
     public Role getUserRole(String userID) {
         Optional<PersonalUser> optionalPersonalUser=personalUserDao.findById(userID);

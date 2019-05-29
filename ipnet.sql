@@ -304,6 +304,8 @@ CREATE TABLE `company_user` (
   `verified` bit(1) NOT NULL,
   `vertification` varchar(255) DEFAULT NULL,
   `website` varchar(255) DEFAULT NULL,
+--   新增钱包地址
+  `wallet_address` varchar(255) default NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -886,6 +888,8 @@ CREATE TABLE `personal_user` (
   `username` varchar(255) DEFAULT NULL,
   `verified` bit(1) NOT NULL,
   `vertification` varchar(255) DEFAULT NULL,
+--   新增钱包地址
+  `wallet_address` varchar(255) default NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -14,6 +14,71 @@ public class UserInfoVo {
     Industry profession;
     String company;
     String region;
+
+    public int getCredit() {
+        return credit;
+    }
+
+    public void setCredit(int credit) {
+        this.credit = credit;
+    }
+
+    public Sex getGender() {
+        return gender;
+    }
+
+    public void setGender(Sex gender) {
+        this.gender = gender;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Industry getProfession() {
+        return profession;
+    }
+
+    public void setProfession(Industry profession) {
+        this.profession = profession;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getStatement() {
+        return statement;
+    }
+
+    public void setStatement(String statement) {
+        this.statement = statement;
+    }
+
+    public String getIDcard_img() {
+        return IDcard_img;
+    }
+
+    public void setIDcard_img(String IDcard_img) {
+        this.IDcard_img = IDcard_img;
+    }
+
     String statement;
     String IDcard_img;
 
@@ -69,7 +134,9 @@ public class UserInfoVo {
 
     public UserInfoVo(String name,int credit, Sex gender, String phone, Industry profession, String company, String region, String statement, String IDcard_img) {
         this.name = name;
+
         this.credit = credit;
+
         this.gender = gender;
         this.phone = phone;
         this.profession = profession;

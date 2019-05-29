@@ -3,6 +3,7 @@ package com.ipnet.entity;
 import com.ipnet.enums.CompanyType;
 import com.ipnet.enums.Identity;
 import com.ipnet.enums.Role;
+import com.ipnet.vo.uservo.CompanyUserInfoVo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -56,4 +57,19 @@ public class CompanyUser {
 
     private boolean isActive;//用户的激活状态
     private String activeCode;//用户的激活码
+
+    private String walletAddress;//用户的钱包地址
+
+    public CompanyUserInfoVo toInfoVO(){
+        CompanyUserInfoVo p = new CompanyUserInfoVo();
+        p.setName(name);
+        p.setGender(null);
+        p.setPhone(tel);
+        p.setProfession(null);
+        p.setCompany(name);
+        p.setRegion(address);
+        p.setStatement(description);
+        p.setIDcard_img(licence);
+        return p;
+    }
 }
