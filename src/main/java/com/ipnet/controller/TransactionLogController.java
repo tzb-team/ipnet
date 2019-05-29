@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/TransationLog")
+@RequestMapping("/TransactionLog")
 public class TransactionLogController {
       @Autowired
       private TransactionLogService service;

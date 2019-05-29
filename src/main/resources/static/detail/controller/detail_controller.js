@@ -13,7 +13,7 @@ $(document).ready(function(){
             $("#patent_name").text(data.patent_id+"    "+data.patent_name);
             $("#patent_number").text(data.patent_id);
             $("#patent_pool_id").text(data.pool_id);
-            $("#patentowner").text(data.patent_holder);
+            $("#patent_owner").text(data.patent_holder);
             $("#patent_state").text(data.state);
             $("#apply_time").text(data.apply_date);
             $("#enable_time").text(data.valid_period);
@@ -24,6 +24,8 @@ $(document).ready(function(){
             alert("fail");
         }
     });
+
+
     // $.ajax({
     //     type : 'POST',
     //     url : '/Patent/recommendPatent',

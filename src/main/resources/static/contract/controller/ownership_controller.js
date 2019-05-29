@@ -11,19 +11,24 @@ $(document).ready(function() {
             animation: 'rotate',
             closeAnimation: 'right',
             opacity: 0.5,
-            confirm: function () {
-                $.alert({
-                    title: '草拟合同成功!',
-                    content: '您已成功草拟此份合同，请耐心等待对方同意',
-                    confirmButton: '我知道了',
-                    confirmButtonClass: 'btn-primary',
-                    icon: 'fa fa-info',
-                    animation: 'zoom',
-                    confirm: function () {
-                        //详见ownership_trade_contract.html
-                    }
-                });
+
+            comfirm:function(){
+                alert("ok")
             }
+
+            // confirm: function () {
+            //     $.alert({
+            //         title: '草拟合同成功!',
+            //         content: '您已成功草拟此份合同，请耐心等待对方同意',
+            //         confirmButton: '我知道了',
+            //         confirmButtonClass: 'btn-primary',
+            //         icon: 'fa fa-info',
+            //         animation: 'zoom',
+            //         confirm: function () {
+            //             //详见ownership_trade_contract.html
+            //         }
+            //     });
+            // }
         });
     });
-})
+});

@@ -489,6 +489,44 @@
                         };
                         localStorage.setItem("ownership_trade_contract",JSON.stringify(temp));
                         // TODO: 数据库存储?
+                        var seller="";
+                        $.ajax({
+                            type:"GET",
+                            url:'/Patent/searchPatentByID',
+                            data:{patentID:localStorage.getItem("patent_id")},
+                            async:false,
+                            success:function(data){
+                                seller = data.userId;
+                                alert(seller);
+                                console.log(data);
+                            },
+                            error:function(error){
+                                alert("error");
+                                console.log(error);
+                            }
+                        });
+                        $.ajax({
+                            type:'POST',
+                            url:'/TransactionLog/addTransactionLog',
+                            data:{
+                                buyer:localStorage.getItem("user_id"),
+                                seller:seller,
+                                buyer_bank_account:'1',
+                                seller_bank_account:'1',
+                                patentId:'1',
+                                amount:'1',
+                                IPPoint:'1'
+                            },
+                            async: false,
+                            success: function () {
+                                alert("success");
+
+                            },
+                            error: function (error) {
+                                alert("fail");
+                                console.log(error);
+                            }
+                        })
                     }
                 });
             }
@@ -496,6 +534,7 @@
     }
 
     function agree(){
+
         $.confirm({
             title: '确认同意草拟合同',
             content: '确认同意后将无法返回 <br> 请仔细核对合同款项',
@@ -507,19 +546,42 @@
             closeAnimation: 'right',
             opacity: 0.5,
             confirm: function () {
-                $.alert({
-                    title: '同意合同成功!',
-                    content: '您已成功同意此份合同，合约完成',
-                    confirmButton: '我知道了',
-                    confirmButtonClass: 'btn-primary',
-                    icon: 'fa fa-info',
-                    animation: 'zoom',
-                    confirm:function(){
-
+                var seller;
+                $.ajax({
+                    type:"GET",
+                    url:'/Patent/searchPatentByID',
+                    data:localStorage.getItem("patent _id"),
+                    async:false,
+                    success:function(data){
+                        seller = data.userId;
+                        alert(seller)
+                    },
+                    error:function(){
+                        alert("error");
+                    }
+                });
+                $.ajax({
+                    type:'POST',
+                    url:'/TransationLog/addTransationLog',
+                    data:{
+                        buyer:localStorage.getItem("user_id"),
+                        seller:seller,
+                        buyer_bank_account:'',
+                        seller_bank_account:'',
+                        patentId:'',
+                        amount:'',
+                        IPPoint:''
+                    },
+                    async: false,
+                    success: function (data) {
+                        alert("success");
+                    },
+                    error: function () {
+                        alert("fail");
                     }
                 })
             }
-        });
+        })
     }
 
 </script>
