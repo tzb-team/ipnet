@@ -1,5 +1,6 @@
 package com.ipnet.entity;
 
+import com.ipnet.vo.TransactionVO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,18 @@ public class Transaction {
     private String transcation_time;//交易时间
     private String patent_id;//交易专利号
     private int IPPoint;    //ip豆
+
+    public TransactionVO toVO(){
+        TransactionVO vo = new TransactionVO();
+        vo.setTranscation_id(transcation_id);
+        vo.setBuyer(buyer);
+        vo.setSeller(seller);
+        vo.setBuyer_bank_account(buyer_bank_account);
+        vo.setSeller_bank_account(seller_bank_account);
+        vo.setAmount(amount);
+        vo.setTranscation_time(transcation_time);
+        vo.setPatent_id(patent_id);
+        vo.setIPPoint(IPPoint);
+        return vo;
+    }
 }
