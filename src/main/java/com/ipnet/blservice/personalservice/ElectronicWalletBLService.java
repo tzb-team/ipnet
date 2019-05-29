@@ -28,6 +28,6 @@ public interface ElectronicWalletBLService {
     //查看积分
     int getPoint(String userId,Role userType);
 
-     ResultMessage updatePoint(String userId,int point,Role userType);
+    ResultMessage updatePoint(String userId,int point,Role userType);
 
 }

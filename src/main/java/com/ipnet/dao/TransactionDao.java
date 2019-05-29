@@ -15,7 +15,7 @@ import java.util.List;
 public interface TransactionDao extends JpaRepository<Transaction, Long> {
 
     @Query(value = "select trans from Transaction trans where trans.transcation_id=:transId")
-    List<Transaction> findByTransId(@Param("transId") long transId);
+    Transaction findByTransId(@Param("transId") long transId);
 
     @Query(value = "select trans from Transaction trans where trans.patent_id=:patentId")
     List<Transaction> findByPatentId(@Param("patentId") String patentId);

@@ -18,23 +18,31 @@ import java.util.List;
  */
 public interface PatentBLService {
 
+    //新增专利
     PatentVO createPatent(PatentVO newPatent);
 
+    //通过专利id获取专利
     PatentVO searchPatentByID(String patentID);
 
+    //新增一个专利
     ResultMessage entryPatent(String patentID, String patent, String userId, String holder, String url, String applyTime, String type, String district, String profile);
 
+    //专利名 搜索专利
     List<PatentVO> searchPatentByName(String name);
 
+    //地区 搜索专利
     List<PatentVO> searchPatentByRegion(String region);
 
+    //状态 搜索专利
     List<PatentVO> searchPatentsByState(Patent_state state);
 
+    //起止日期 搜索专利
     List<PatentVO> searchPatentsByApplyDate(String StartDate , String endDate);
 
+    //专利种类 搜索专利
     List<PatentVO> searchPatentsByType(String patent_type);
 
-
+    // 搜索专利
     List<PatentVO> searchPatentsByValid_period(String valid_period);
 
     List<PatentVO> searchPatentByPool(String poolId);

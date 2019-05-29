@@ -42,11 +42,21 @@ public class TransactionLogController {
         return service.getAllTransactions();
     }
 
+    /**
+     * 通过交易记录id获取交易记录信息
+     * @param transId
+     * @return
+     */
     @RequestMapping("/getTransById")
-    public @ResponseBody List<TransactionVO> getTransById(long transId){
+    public @ResponseBody TransactionVO getTransById(long transId){
         return service.getTransById(transId);
     }
 
+    /**
+     * 通过专利id获得专利交易记录（列表）
+     * @param patentId
+     * @return
+     */
     @RequestMapping("/getTransByPatentId")
     public @ResponseBody List<TransactionVO> getTransByPatentId(String patentId){
         return service.getTransByPatentId(patentId);
