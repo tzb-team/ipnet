@@ -35,7 +35,7 @@ public class BlockChain {
     private final String _walletFilePath = "src/main/java/com/ipnet/utility/walletFiles";
 
     // 部署的合约地址
-    private String contractAddress = "0xF2d0ee42A477c6183284df22123fb74aF283C6ab";
+    private String contractAddress = "0x73DC856287463D518B83ADEdAF2D6EC530694EAC";
 
 
 
@@ -155,5 +155,10 @@ public class BlockChain {
         else {
             System.out.println("交易失败");
         }
+    }
+
+    public static void main(String[] args) {
+        BlockChain blockChain = new BlockChain();
+        blockChain.registerPatent("0xA45a432a77E1D5B903eAB48A88Ae8CD7896Be9c4","00051651");
     }
 }
