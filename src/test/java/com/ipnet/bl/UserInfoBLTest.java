@@ -28,9 +28,9 @@ public class UserInfoBLTest {
 
     @Test
     public void getWalletAddressById() throws IOException {
-        String userid = "";
+        String userid = "1025149919@qq.com";
         String result = service.getWalletAddressById(userid);
-        System.out.println(result);
+        System.out.println(userid+"的链上地址为: "+result);
     }
 
 }

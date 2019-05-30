@@ -47,6 +47,7 @@ public interface PatentBLService {
 
     List<PatentVO> searchPatentByPool(String poolId);
 
+    //获得用户持有的专利（Holder）
     List<PatentVO> getPatentList(String userId);
 
     List<PatentVO> searchPatent(String info);
@@ -54,6 +55,8 @@ public interface PatentBLService {
     Boolean deletePatent(String patentID);
 
     Boolean updatePatentState(Patent_state newState, String patentID) throws IDNotExistsException;
+
+    Boolean updatePatentHolder(String newHolder, String patentID) throws IDNotExistsException;
 
     void exitIpSet(String ipId,String ipSetId) throws IDNotExistsException;     //专利退池
 
@@ -65,7 +68,7 @@ public interface PatentBLService {
 
     void sendInvitationFromPool(String patentId , String patentPoolId) throws IDNotExistsException;
 
-     List<PatentVO> searchRelatedPatents();
+    List<PatentVO> searchRelatedPatents();
 
     List<PatentVO> recommendPatent();
 

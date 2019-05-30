@@ -32,7 +32,7 @@ public class PatentController {
         return service.createPatent(newPatent);
     }
 
-
+//1//  信息获取
     /**
      * 模糊搜索
      * @param info
@@ -101,7 +101,7 @@ public class PatentController {
 
     /**
      * 获取用户的专利列表patents
-     * @param userId 用户Id   //即根据专利拥有者获得专利
+     * @param userId 用户Id   //即根据专利拥有者（Holder）获得专利
      * @return 专利列表
      */
     @RequestMapping("/getPatentList")
@@ -142,11 +142,12 @@ public class PatentController {
         return service.searchPatentsByValid_period(valid_period);
     }
 
+//2//  专利信息录入, 删除， 更新
     /**
      * 专利录入
      * @param patentID 专利号
      * @param patent 专利
-     * @param holder 持有人
+     * @param holder 持有人(默认为userId)
      * @param url 专利相关图片url
      * @param applyTime 申请时间
      * @param type 专利类型
@@ -157,7 +158,7 @@ public class PatentController {
     @RequestMapping("/entryPatent")
     @ResponseBody
     public ResultMessage entryPatent(String patentID, String patent, String userId , String holder,String url, String applyTime, String type, String district, String profile) {
-        return service.entryPatent(patentID , patent, userId ,holder, url ,applyTime , type, district, profile);
+        return service.entryPatent(patentID , patent, userId ,userId, url ,applyTime , type, district, profile);
     }
 
     /**
@@ -185,6 +186,32 @@ public class PatentController {
     }
 
     /**
+     * 更新专利信息
+     * @param ipVo
+     * @return
+     */
+    @RequestMapping("/updateIp")
+    public @ResponseBody
+    boolean updateIp(@RequestBody PatentVO ipVo) {
+        return service.updateIp(ipVo);
+    }
+
+    /**
+     * 更新专利持有人（持有人变更）
+     * @param newHolder
+     * @param patentID
+     * @return
+     * @throws IDNotExistsException
+     */
+    @RequestMapping("/updatePatentHolder")
+    public @ResponseBody
+    Boolean updatePatentHolder(@RequestParam String newHolder, @RequestParam String patentID) throws IDNotExistsException {
+        return service.updatePatentHolder(newHolder, patentID);
+    }
+
+//3//  专利池相关
+
+    /**
      * 专利退池
      * @param ipId
      * @param ipSetId
@@ -194,17 +221,6 @@ public class PatentController {
     public @ResponseBody
     void exitIpSet(@RequestParam String ipId, @RequestParam String ipSetId) throws IDNotExistsException {
         service.exitIpSet(ipId, ipSetId);
-    }
-
-    /**
-     * 更新专利信息
-     * @param ipVo
-     * @return
-     */
-    @RequestMapping("/updateIp")
-    public @ResponseBody
-    boolean updateIp(@RequestBody PatentVO ipVo) {
-        return service.updateIp(ipVo);
     }
 
     /**
@@ -241,6 +257,7 @@ public class PatentController {
           return service.acceptInvitationFromPool(patentId , patentPoolId);
     }
 
+//4//  推荐
     /**
      * 推荐相关专利;
      * @return
