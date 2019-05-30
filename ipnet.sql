@@ -27,7 +27,7 @@ CREATE TABLE `account` (
   `balance` double NOT NULL,
   `user_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`acount_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,7 @@ CREATE TABLE `agent_contract` (
   `use_fee` int(11) NOT NULL,
   `year` int(11) NOT NULL,
   PRIMARY KEY (`contract_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +122,7 @@ CREATE TABLE `breakup_contract` (
   `time1` varchar(255) DEFAULT NULL,
   `time2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`contract_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +153,7 @@ CREATE TABLE `claim` (
   `person` varchar(255) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`claimid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +179,7 @@ CREATE TABLE `com_message` (
   `receiver` varchar(255) DEFAULT NULL,
   `time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`mid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,7 +207,7 @@ CREATE TABLE `com_user` (
   `releasedpost` int(11) NOT NULL,
   `tags` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +231,7 @@ CREATE TABLE `com_user_history` (
   `history_id` bigint(20) NOT NULL,
   UNIQUE KEY `UK_nadyfpcjp86artwkjhnaehlv6` (`history_id`),
   KEY `FK4hiu5r8b9dmjs1opdc4347axr` (`community_user_userid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +255,7 @@ CREATE TABLE `com_user_mines` (
   `mines_fid` bigint(20) NOT NULL,
   UNIQUE KEY `UK_3xqqb5r4ub1m1pf0oqgx7w7up` (`mines_fid`),
   KEY `FKl53vyuba1s6d4qewt7db1lg9c` (`community_user_userid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,7 +307,7 @@ CREATE TABLE `company_user` (
 --   新增钱包地址
   `wallet_address` varchar(255) default NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -330,7 +330,7 @@ CREATE TABLE `company_user_bank_accounts` (
   `company_user_id` varchar(255) NOT NULL,
   `bank_accounts` varchar(255) DEFAULT NULL,
   KEY `FK7pvlxcvv54unvawt852k04fxg` (`company_user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -353,7 +353,7 @@ CREATE TABLE `company_user_identities` (
   `company_user_id` varchar(255) NOT NULL,
   `identities` varchar(255) DEFAULT NULL,
   KEY `FKq852meexqyd8yghuenjwn7vqx` (`company_user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,7 +387,7 @@ CREATE TABLE `evaluation` (
   `tech` varchar(255) DEFAULT NULL,
   `time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -408,7 +408,7 @@ DROP TABLE IF EXISTS `hibernate_sequence`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hibernate_sequence` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,7 +441,7 @@ CREATE TABLE `insurance` (
   `patent_id` varchar(255) DEFAULT NULL,
   `person` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -466,7 +466,7 @@ CREATE TABLE `invitation` (
   `patent_id` varchar(255) DEFAULT NULL,
   `patent_pool_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`simple_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -524,7 +524,7 @@ CREATE TABLE `loan` (
   `userid` varchar(255) DEFAULT NULL,
   `way` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`loanid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -565,7 +565,7 @@ CREATE TABLE `loan_contract` (
   `sixteenth_percent` int(11) NOT NULL,
   `tenth_date` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`contract_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -592,7 +592,7 @@ CREATE TABLE `log` (
   `param` varchar(255) DEFAULT NULL,
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -618,7 +618,7 @@ CREATE TABLE `message` (
   `receiver` varchar(255) DEFAULT NULL,
   `time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`mid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -643,7 +643,7 @@ CREATE TABLE `mine` (
   `tid` varchar(255) DEFAULT NULL,
   `time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`fid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -676,7 +676,7 @@ CREATE TABLE `patent` (
   `user_id` varchar(255) DEFAULT NULL,
   `valid_period` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`patent_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -699,7 +699,7 @@ CREATE TABLE `patent_invitation_pool_id_list` (
   `patent_patent_id` varchar(255) NOT NULL,
   `invitation_pool_id_list` varchar(255) DEFAULT NULL,
   KEY `FKps4dmwkn4ij75vf4or74p7sen` (`patent_patent_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -725,7 +725,7 @@ CREATE TABLE `patent_or_manager_rec` (
   `points` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   PRIMARY KEY (`rec_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -748,7 +748,7 @@ CREATE TABLE `patent_pool_applypatents` (
   `patent_pool_id` varchar(255) NOT NULL,
   `applypatents` varchar(255) DEFAULT NULL,
   KEY `FK8v8qdj18sgu6hf1ndidox0xg1` (`patent_pool_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -771,7 +771,7 @@ CREATE TABLE `patent_pool_managers` (
   `patent_pool_id` varchar(255) NOT NULL,
   `managers` varchar(255) DEFAULT NULL,
   KEY `FKqnysi0yupmnu3aikb31ijpjyp` (`patent_pool_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -794,7 +794,7 @@ CREATE TABLE `patent_pool_patents` (
   `patent_pool_id` varchar(255) NOT NULL,
   `patents` varchar(255) DEFAULT NULL,
   KEY `FKcvd49d9k67td0bcuk4usx6pw` (`patent_pool_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -817,7 +817,7 @@ CREATE TABLE `patent_pool_users` (
   `patent_pool_id` varchar(255) NOT NULL,
   `users` varchar(255) DEFAULT NULL,
   KEY `FKqov5v4m30mvcrws2vxcvy2o7s` (`patent_pool_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -846,7 +846,7 @@ CREATE TABLE `permit_contract` (
   `sign_address` varchar(255) DEFAULT NULL,
   `sign_date` datetime DEFAULT NULL,
   PRIMARY KEY (`contract_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -891,7 +891,7 @@ CREATE TABLE `personal_user` (
 --   新增钱包地址
   `wallet_address` varchar(255) default NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -914,7 +914,7 @@ CREATE TABLE `personal_user_bank_account` (
   `personal_user_id` varchar(255) NOT NULL,
   `bank_account` varchar(255) DEFAULT NULL,
   KEY `FK9y23tpsuo9jj5pb7ut88njo5i` (`personal_user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -937,7 +937,7 @@ CREATE TABLE `personal_user_identities` (
   `personal_user_id` varchar(255) NOT NULL,
   `identities` int(11) DEFAULT NULL,
   KEY `FKd6fqur5dgj368yy4ho6xdfdxq` (`personal_user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -967,7 +967,7 @@ CREATE TABLE `pool` (
   `picture` varchar(255) DEFAULT NULL,
   `profile` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -998,7 +998,7 @@ CREATE TABLE `post` (
   `remark_num` bigint(20) NOT NULL,
   `visits` bigint(20) NOT NULL,
   PRIMARY KEY (`post_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1021,7 +1021,7 @@ CREATE TABLE `post_post_tag` (
   `post_post_id` varchar(255) NOT NULL,
   `post_tag` varchar(255) DEFAULT NULL,
   KEY `FK72a7f6ps7bh3plrbsmcskhe9` (`post_post_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1045,7 +1045,7 @@ CREATE TABLE `post_remark_content` (
   `remark_content_rid` bigint(20) NOT NULL,
   UNIQUE KEY `UK_n28kn9um9uwuniyei6mwg2iis` (`remark_content_rid`),
   KEY `FK5u36959yajq7c0r2dtn7781ki` (`post_post_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1070,7 +1070,7 @@ CREATE TABLE `record` (
   `postname` varchar(255) DEFAULT NULL,
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1096,7 +1096,7 @@ CREATE TABLE `remark` (
   `remark_time` datetime DEFAULT NULL,
   `reviewer` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`rid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1123,7 +1123,7 @@ CREATE TABLE `require_rec` (
   `points` int(11) NOT NULL,
   `require_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`rec_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1153,7 +1153,7 @@ CREATE TABLE `transaction` (
   `seller_bank_account` varchar(255) DEFAULT NULL,
   `transcation_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`transcation_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1207,7 +1207,7 @@ CREATE TABLE `transfer_contract` (
   `type` varchar(255) DEFAULT NULL,
   `year` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`contract_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
