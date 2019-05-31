@@ -34,15 +34,17 @@ $('#submit').on('click', function () {
                 district: district,
                 profile: profile
             },
-            success: function () {
+            success: function (res) {
                 console.log("专利数据录入成功");
                 patentBlockChain(patentID,userId);
                 storage.removeItem('fileURL');
                 storage.removeItem('uploadImageURL');
                 infoFile("已提交");
-                setTimeout(function () {
-                    window.location.href = "/ipnet/home";
-                }, 2000);
+                alert("哈希块："+res);
+                window.location.href="https://ropsten.etherscan.io/tx/"+res;
+                // setTimeout(function () {
+                //     window.location.href = "/ipnet/home";
+                // }, 2000);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
