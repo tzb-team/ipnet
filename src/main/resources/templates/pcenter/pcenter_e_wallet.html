@@ -347,17 +347,6 @@
                                 </header>
                             </div>
                             <div class="row">
-                                <div class="col-xs-6">
-                                    <div id="Ew_point"><i><img class="imgMid" src="/ipnet_Login_v2/images/icon-gift.jpg" alt="Gift" height="5%" width="5%" style="margin-left: 8px;margin-right: 5px"></i><span class="t1" style="margin-left: 5px;">0积分</span></div>
-                                </div>
-                                <div class="col-xs-6">
-							            <button id="obtainPoint">获取</button>
-                                </div>
-                                <script>
-                                    $('#obtainPoint').on('click',function () {
-                                        
-                                    })
-                                </script>
                                 <div class="col-xs-12" style="margin-top: 10px;">
                                     <span class="t2">
                                         <table class="tb-12">
@@ -374,6 +363,65 @@
                                     </table>
                                     </span>
                                 </div>
+                                <div class="col-xs-6">
+                                    <div id="Ew_point"><i><img class="imgMid" src="/ipnet_Login_v2/images/icon-gift.jpg" alt="Gift" height="5%" width="5%" style="margin-left: 8px;margin-right: 5px"></i><span class="t1" style="margin-left: 5px;" id="balance">0积分</span></div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <button id="obtainPoint" onclick="OpenDiv();">获取</button>
+                                </div>
+                                <div id="hidePart">
+                                    <table>
+                                        <tr><td>银行卡号</td><td><input type="text" id="cardName"></td></tr>
+                                        <tr><td>密码</td><td><input type="text" id="password"></td></tr>
+                                        <tr><td>购买数量：（1:1）</td><td><input type="text" id="amount"></td></tr>
+                                        <!--                                        <tr><td><button onclick="CloseDiv();" id="closeBtn1">关闭</button></td><td><button id="postBtn1">确认</button></td></tr>-->
+                                        <tr id="btnPart"><button onclick="CloseDiv();" id="closeBtn2">关闭</button><button id="postBtn2" onclick=alertSuccess()>确认</button></tr>
+                                    </table>
+                                </div>
+                                <script>
+                                    function alertSuccess(){
+                                        var cardName=$('#cardName').val();
+                                        var password=$('#password').val();
+                                        var amount=$('#amount').val();
+                                        localStorage.setItem("balance",parseInt(0));
+                                        console.log(localStorage.getItem("balance"));
+                                        var balance=localStorage.getItem('balance');
+                                        console.log(balance);
+                                        balance=parseInt(balance)+parseInt(amount);
+                                        localStorage.setItem("balance",parseInt(balance));
+                                        console.log(balance);
+                                        setTimeout(showPoint(),2000);
+                                        CloseDiv();
+                                    };
+
+                                    function showPoint() {
+                                        $('#balance').text(parseInt(localStorage.getItem("balance")));
+                                    }
+
+                                    function OpenDiv(){
+                                        document.getElementById("hidePart").style.display="block";
+                                        document.getElementById("obtainPoint").style.display="none";
+                                    }
+                                    function CloseDiv(){
+                                        document.getElementById("hidePart").style.display="none";
+                                        document.getElementById("obtainPoint").style.display="block";
+                                    }
+                                </script>
+                                <style>
+                                    #btnPart {
+                                        top: 800px;
+                                    }
+                                    #hidePart{
+                                        display: none;
+                                        position: absolute;
+                                        /*left:10%;*/
+                                        top:600px;
+                                        width:500px;
+                                        height:400px;
+                                        background-color:white;
+                                        text-align: center;
+                                    }
+                                </style>
                             </div>
                         </section>
                     </div>
