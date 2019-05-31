@@ -1,7 +1,9 @@
 package com.ipnet.bl.patentbl;
 
+import com.ipnet.blservice.UserBLService;
 import com.ipnet.dao.InvitationDao;
 import com.ipnet.dao.PatentPoolDao;
+import com.ipnet.dao.PersonalUserDao;
 import com.ipnet.entity.PatentPool;
 import com.ipnet.enums.ResultMessage;
 import com.ipnet.utility.BlockChain;
@@ -32,6 +34,9 @@ public class PatentBLServiceImpl implements PatentBLService {
 
     @Autowired
     private PatentDao patentDao;
+
+    @Autowired
+    private PersonalUserDao personalUserDao;
 
     @Autowired
     private PatentPoolDao patentpoolDao;
@@ -86,7 +91,9 @@ public class PatentBLServiceImpl implements PatentBLService {
         this.patentDao.saveAndFlush(p);
         //链上
         String chainResHash = "";
-        chainResHash = blockChain.registerPatent(userId, patentID);
+
+        chainResHash = blockChain.
+                registerPatent(personalUserDao.findPersonalUserById(userId).getWalletAddress(), patentID);
         if (chainResHash==null){ //上链失败
             this.patentDao.deleteById(patentID); // 回滚
             return "";
