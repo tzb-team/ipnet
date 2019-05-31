@@ -180,7 +180,6 @@ public class UserBL implements UserBLService{
 
             if(this.sendEmail(register.getUsername(),activeCode)){
 
-                //TODO: 获取钱包地址 walletAddress 等待测试
                 String address = blockChain.createWalletFile(register.getPassword());
                 newPersonalUser.setWalletAddress(address);
 

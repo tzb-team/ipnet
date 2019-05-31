@@ -31,8 +31,8 @@ $.ajax({
             patentList += "<tr>\n" +
                 "                                                    <td><a class=\"btn-link\" href=\"#\">"+data[i].patent_id +"</a></td>\n" +
                 "                                                    <td>"+data[i].patent_name+"</td>\n" +
-                "                                                    <td><span class=\"text-muted\"><i class=\"demo-pli-clock\"></i> 2014.01.10</span></td>\n" +
-                "                                                    <td>2015.01.10</td>\n" +
+                "                                                    <td><span class=\"text-muted\"><i class=\"demo-pli-clock\"></i> 2019.05.31</span></td>\n" +
+                "                                                    <td>未出池</td>\n" +
                 "                                                    <td>\n" +
                 "                                                        <div class=\"label label-table label-success\">正常</div>\n" +
                 "                                                    </td>\n" +

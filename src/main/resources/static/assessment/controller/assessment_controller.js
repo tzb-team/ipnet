@@ -54,6 +54,8 @@ $(document).ready(function(){
                     window.location.href="/ipnet/assessment_result";
                 },
                 error:function (data) {
+                    // localStorage.setItem("patent_name",patent_name);
+                    // localStorage.setItem("result","43567");
                     console.log(data);
                 }
             });
