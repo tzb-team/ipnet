@@ -115,6 +115,8 @@ public class BlockChain {
         if (patentContract!=null){
             try {
                 result = patentContract.regPatent(patentId,holderAddress).send().getTransactionHash();
+
+                System.out.println("registerPatent");
             } catch (Exception e) {
                 e.printStackTrace();
             }

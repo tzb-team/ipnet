@@ -4,7 +4,9 @@ import com.ipnet.blservice.TransactionLogService;
 import com.ipnet.dao.TransactionDao;
 import com.ipnet.entity.Transaction;
 import com.ipnet.utility.BlockChain;
+import com.ipnet.dao.PersonalUserDao;
 import com.ipnet.vo.TransactionVO;
+import com.ipnet.bl.personalbl.UserInfoBLServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -19,6 +21,8 @@ import java.util.List;
 public class TransactionLogBL implements TransactionLogService{
     @Autowired
     private  TransactionDao transactionDao;
+    @Autowired
+    private PersonalUserDao personalUserDao;
 
     BlockChain blockChain = new BlockChain();
 
@@ -36,6 +40,7 @@ public class TransactionLogBL implements TransactionLogService{
     public String addTransactionLog(String buyer, String seller, String buyer_bank_account, String seller_bank_account, String patentId , double amount ,int IPPoint) {
         //保存交易记录
         //1.数据库存储
+
         Transaction transaction = new Transaction();
         transaction.setBuyer(buyer);
         transaction.setSeller(seller);
@@ -51,7 +56,7 @@ public class TransactionLogBL implements TransactionLogService{
         this.transactionDao.saveAndFlush(transaction);
         long transid = getAllTransactions().get(0).getTranscation_id();
         //2.区块链存储
-        String txHash = blockChain.patentTrade(patentId,buyer);
+        String txHash = blockChain.patentTrade(patentId,personalUserDao.findPersonalUserById(buyer).getWalletAddress());
         if (txHash==null){
             transactionDao.deleteById(transid);
             return "";
