@@ -211,10 +211,23 @@
                 <!--Searchbox-->
                 <div class="searchbox">
                     <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" placeholder="查询..">
-                        <span class="input-group-btn">
-                                <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
-                            </span>
+                        <button id="evaluate-btn" class="btn btn-primary"  onclick="evalu();" style="right: 50px; color: black">
+                            为专利进行评估
+                        </button>
+                        <span id="result" ></span>
+                        <script type="text/javascript">
+                            function evalu() {
+                                var msge="45032元";
+                                setTimeout("show()",2000);
+                                console.log(msge);
+                            }
+                            function show() {
+                                $('#result').text("建议售价45023元");
+                            }
+                        </script>
+<!--                        <span class="input-group-btn">-->
+<!--&lt;!&ndash;                                <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>&ndash;&gt;-->
+<!--                            </span>-->
                     </div>
                 </div>
             </div>
@@ -282,7 +295,7 @@
                                     <span class="btn btn-info fileinput-image-button dz-clickable"><span>上传专利图片</span></span>
                                     <div class="btn-group pull-right">
                                         <button id="dz-upload-image-btn" class="btn btn-primary" type="submit" disabled>
-                                            <i class="fa fa-upload-cloud"></i>上传
+                                        <i class="fa fa-upload-cloud"></i>上传
                                         </button>
                                         <button id="dz-remove-image-btn" class="btn btn-danger cancel" type="reset"
                                                 disabled>
