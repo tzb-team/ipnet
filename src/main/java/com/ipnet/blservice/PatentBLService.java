@@ -25,7 +25,7 @@ public interface PatentBLService {
     PatentVO searchPatentByID(String patentID);
 
     //新增一个专利
-    ResultMessage entryPatent(String patentID, String patent, String userId, String holder, String url, String applyTime, String type, String district, String profile);
+    String entryPatent(String patentID, String patent, String userId, String holder, String url, String applyTime, String type, String district, String profile);
 
     //专利名 搜索专利
     List<PatentVO> searchPatentByName(String name);

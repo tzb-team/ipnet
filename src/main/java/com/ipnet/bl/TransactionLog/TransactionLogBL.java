@@ -33,7 +33,7 @@ public class TransactionLogBL implements TransactionLogService{
      * @param IPPoint
      */
     @Override
-    public void addTransactionLog(String buyer, String seller, String buyer_bank_account, String seller_bank_account, String patentId , double amount ,int IPPoint) {
+    public String addTransactionLog(String buyer, String seller, String buyer_bank_account, String seller_bank_account, String patentId , double amount ,int IPPoint) {
         //保存交易记录
         //1.数据库存储
         Transaction transaction = new Transaction();
@@ -49,9 +49,16 @@ public class TransactionLogBL implements TransactionLogService{
         String date = df.format(new Date());
         transaction.setTranscation_time(date);
         this.transactionDao.saveAndFlush(transaction);
+        long transid = getAllTransactions().get(0).getTranscation_id();
         //2.区块链存储
-//        TODO: 暂未考虑失败情况，待修改
-        blockChain.patentTrade(patentId,buyer);
+        String txHash = blockChain.patentTrade(patentId,buyer);
+        if (txHash==null){
+            transactionDao.deleteById(transid);
+            return "";
+        }
+
+        else
+            return txHash;
 
         //完成交易
         //1.转账

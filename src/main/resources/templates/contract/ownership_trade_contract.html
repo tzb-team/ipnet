@@ -490,6 +490,7 @@
                         localStorage.setItem("ownership_trade_contract",JSON.stringify(temp));
                         // TODO: 数据库存储?
                         var seller="";
+                        var amount="";
                         $.ajax({
                             type:"GET",
                             url:'/Patent/searchPatentByID',
@@ -497,7 +498,7 @@
                             async:false,
                             success:function(data){
                                 seller = data.userId;
-                                alert(seller);
+                                amount = data.region;
                                 console.log(data);
                             },
                             error:function(error){
@@ -513,14 +514,30 @@
                                 seller:seller,
                                 buyer_bank_account:'1',
                                 seller_bank_account:'1',
-                                patentId:'1',
-                                amount:'1',
+                                patentId:localStorage.getItem("patent_id"),
+                                amount:amount,
                                 IPPoint:'1'
                             },
                             async: false,
-                            success: function () {
-                                alert("success");
-
+                            success: function (res) {
+                                $.ajax({
+                                    type:'POST',
+                                    url:'/Patent/updatePatentHolder',
+                                    data:{
+                                        newHolder:localStorage.getItem("user_id"),
+                                        patentID:localStorage.getItem("patent_id")
+                                    },
+                                    async:false,
+                                    success:function(){
+                                        alert("s!");
+                                    },
+                                    error:function(error){
+                                        alert("failed");
+                                        console.log(error);
+                                    }
+                                });
+                                alert("哈希块："+res);
+                                window.location.href="https://ropsten.etherscan.io/tx/"+res;
                             },
                             error: function (error) {
                                 alert("fail");
