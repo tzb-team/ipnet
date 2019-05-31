@@ -110,17 +110,19 @@ public class BlockChain {
      * @param holderAddress 专利持有人的钱包地址
      * @param patentId 专利号
      */
-    public void registerPatent(String holderAddress, String patentId){
+    public String registerPatent(String holderAddress, String patentId){
+        String result = null;
         if (patentContract!=null){
             try {
-                patentContract.regPatent(patentId,holderAddress).send();
+                result = patentContract.regPatent(patentId,holderAddress).send().getTransactionHash();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        else {
-            System.out.println("专利上链失败");
-        }
+//        else {
+//            System.out.println("专利上链失败");
+//        }
+        return result;
     }
 
     /**
@@ -143,22 +145,25 @@ public class BlockChain {
      * 专利交易
      * @param patentId 专利号
      * @param newOwner 新的专利持有人
+     * @return txHash
      */
-    public void patentTrade(String patentId, String newOwner){
+    public String patentTrade(String patentId, String newOwner){
+        String result = null;
         if (patentContract!=null){
             try {
-                System.out.println(patentContract.transaction(patentId,newOwner).send());
+                result = patentContract.transaction(patentId,newOwner).send().getTransactionHash();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        else {
-            System.out.println("交易失败");
-        }
+        return result;
     }
-
-    public static void main(String[] args) {
-        BlockChain blockChain = new BlockChain();
-        blockChain.registerPatent("0xA45a432a77E1D5B903eAB48A88Ae8CD7896Be9c4","00051651");
-    }
+//
+//    public static void main(String[] args) {
+//        BlockChain blockChain = new BlockChain();
+//        String test = blockChain.registerPatent("0xA45a432a77E1D5B903eAB48A88Ae8CD7896Be9c4","0005198981");
+//        System.out.println("end");
+//
+//        System.out.println(test);
+//    }
 }
