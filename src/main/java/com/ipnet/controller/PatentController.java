@@ -153,11 +153,11 @@ public class PatentController {
      * @param type 专利类型
      * @param district 所属地区
      * @param profile 简介
-     * @return
+     * @return String
      */
     @RequestMapping("/entryPatent")
     @ResponseBody
-    public ResultMessage entryPatent(String patentID, String patent, String userId , String holder,String url, String applyTime, String type, String district, String profile) {
+    public String entryPatent(String patentID, String patent, String userId , String holder,String url, String applyTime, String type, String district, String profile) {
         return service.entryPatent(patentID , patent, userId ,userId, url ,applyTime , type, district, profile);
     }
 

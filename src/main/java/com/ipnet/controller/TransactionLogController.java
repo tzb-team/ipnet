@@ -26,10 +26,12 @@ public class TransactionLogController {
      * @param patentId
      * @param amount
      * @param IPPoint
+     *
+     * @return txHash
      */
       @RequestMapping("/addTransactionLog")
-      public @ResponseBody void addTransactionLog(@RequestParam String buyer,@RequestParam String seller, @RequestParam String buyer_bank_account,@RequestParam String seller_bank_account,@RequestParam String patentId ,@RequestParam double amount ,@RequestParam int IPPoint) {
-          service.addTransactionLog(buyer, seller, buyer_bank_account,seller_bank_account,patentId,amount,IPPoint);
+      public @ResponseBody String addTransactionLog(@RequestParam String buyer,@RequestParam String seller, @RequestParam String buyer_bank_account,@RequestParam String seller_bank_account,@RequestParam String patentId ,@RequestParam double amount ,@RequestParam int IPPoint) {
+          return service.addTransactionLog(buyer, seller, buyer_bank_account,seller_bank_account,patentId,amount,IPPoint);
       }
 
     /**

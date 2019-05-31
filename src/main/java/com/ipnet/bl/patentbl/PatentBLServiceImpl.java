@@ -4,6 +4,7 @@ import com.ipnet.dao.InvitationDao;
 import com.ipnet.dao.PatentPoolDao;
 import com.ipnet.entity.PatentPool;
 import com.ipnet.enums.ResultMessage;
+import com.ipnet.utility.BlockChain;
 import com.ipnet.vo.PatentVO;
 import com.ipnet.blservice.PatentBLService;
 import com.ipnet.dao.PatentDao;
@@ -23,8 +24,8 @@ import java.util.stream.Collectors;
 import static com.ipnet.enums.Patent_state.free;
 
 /**
- * @author lzb
- * @date 2018/7/21 10:35
+ * @author sdj
+ * @date 2019/5/31 8:00
  */
 @Service
 public class PatentBLServiceImpl implements PatentBLService {
@@ -40,6 +41,8 @@ public class PatentBLServiceImpl implements PatentBLService {
 
     @Autowired
     private TransHelper transHelper;
+
+    BlockChain blockChain = new BlockChain();
 
     @Override
     public PatentVO createPatent(PatentVO newPatent) {
@@ -63,8 +66,10 @@ public class PatentBLServiceImpl implements PatentBLService {
      * @return
      */
     @Override
-    public ResultMessage entryPatent(String patentID, String patent, String userId, String holder, String url, String applyTime, String type, String district, String profile) {
+    public String entryPatent(String patentID, String patent, String userId, String holder, String url, String applyTime, String type, String district, String profile) {
+
         Patent p = new Patent();
+        //数据库
         p.setPatent_id(patentID);
         p.setPool_id("");
         p.setUserId(userId);
@@ -79,14 +84,22 @@ public class PatentBLServiceImpl implements PatentBLService {
         p.setState(free);
         p.setValid_period("2");      //有效期限设定;    这个设值有待商榷
         this.patentDao.saveAndFlush(p);
-        return null;
+        //链上
+        String chainResHash = "";
+        chainResHash = blockChain.registerPatent(userId, patentID);
+        if (chainResHash==null){ //上链失败
+            this.patentDao.deleteById(patentID); // 回滚
+            return "";
+        }
+
+        return chainResHash;
     }
 
     //ID搜专利
     @Override
     public PatentVO searchPatentByID(String patentID) {
         Optional<Patent> optionalPatent = this.patentDao.findById(patentID);
-        if (optionalPatent.isPresent() ==false){
+        if (!optionalPatent.isPresent()){
             return null;
         }
         PatentVO resultVO = (PatentVO) this.transHelper.transTO(optionalPatent.get() , PatentVO.class);

@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface TransactionLogService {
 
-    //新增一条交易记录
-    void addTransactionLog(String buyer , String seller , String buyer_bank_account , String seller_bank_account , String patentId , double amount , int IPPoint);
+    //新增一条交易记录，并返回交易哈希
+    String addTransactionLog(String buyer , String seller , String buyer_bank_account , String seller_bank_account , String patentId , double amount , int IPPoint);
 
     //获取所有交易记录
     List<Transaction> getAllTransactions();
