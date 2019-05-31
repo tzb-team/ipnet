@@ -3,6 +3,7 @@ package com.ipnet.bl.TransactionLog;
 import com.ipnet.blservice.TransactionLogService;
 import com.ipnet.dao.TransactionDao;
 import com.ipnet.entity.Transaction;
+import com.ipnet.utility.BlockChain;
 import com.ipnet.vo.TransactionVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -19,8 +20,22 @@ public class TransactionLogBL implements TransactionLogService{
     @Autowired
     private  TransactionDao transactionDao;
 
+    BlockChain blockChain = new BlockChain();
+
+    /**
+     * 新增交易记录:1.数据库 2.上链
+     * @param buyer
+     * @param seller
+     * @param buyer_bank_account
+     * @param seller_bank_account
+     * @param patentId
+     * @param amount
+     * @param IPPoint
+     */
     @Override
     public void addTransactionLog(String buyer, String seller, String buyer_bank_account, String seller_bank_account, String patentId , double amount ,int IPPoint) {
+        //保存交易记录
+        //1.数据库存储
         Transaction transaction = new Transaction();
         transaction.setBuyer(buyer);
         transaction.setSeller(seller);
@@ -34,6 +49,14 @@ public class TransactionLogBL implements TransactionLogService{
         String date = df.format(new Date());
         transaction.setTranscation_time(date);
         this.transactionDao.saveAndFlush(transaction);
+        //2.区块链存储
+//        TODO: 暂未考虑失败情况，待修改
+        blockChain.patentTrade(patentId,buyer);
+
+        //完成交易
+        //1.转账
+        //TODO：待解决
+
     }
 
     @Override

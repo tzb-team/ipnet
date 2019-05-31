@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 
+/**
+ * 通知Controller
+ * @author SDJ
+ *
+ */
 @Controller
 public class MessageController {
 

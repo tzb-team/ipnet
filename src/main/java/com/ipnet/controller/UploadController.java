@@ -12,6 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 上传文件到服务器
+ */
 @Controller
 @RequestMapping("upload")
 public class UploadController {

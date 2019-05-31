@@ -49,6 +49,19 @@ public class PatentBLServiceImpl implements PatentBLService {
         return resultVO;
     }
 
+    /**
+     * 新增专利 数据库 链上
+     * @param patentID
+     * @param patent
+     * @param userId
+     * @param holder
+     * @param url
+     * @param applyTime
+     * @param type
+     * @param district
+     * @param profile
+     * @return
+     */
     @Override
     public ResultMessage entryPatent(String patentID, String patent, String userId, String holder, String url, String applyTime, String type, String district, String profile) {
         Patent p = new Patent();
@@ -69,6 +82,7 @@ public class PatentBLServiceImpl implements PatentBLService {
         return null;
     }
 
+    //ID搜专利
     @Override
     public PatentVO searchPatentByID(String patentID) {
         Optional<Patent> optionalPatent = this.patentDao.findById(patentID);
@@ -79,6 +93,7 @@ public class PatentBLServiceImpl implements PatentBLService {
         return resultVO;
     }
 
+    //名字搜专利
     @Override
     public List<PatentVO> searchPatentByName(String name) {
         List<Patent> patentList = this.patentDao.searchPatentByPatentName(name);
@@ -92,9 +107,10 @@ public class PatentBLServiceImpl implements PatentBLService {
         return voList;
     }
 
+    //获取专利列表
     @Override
     public List<PatentVO> getPatentList(String userId){
-        List<Patent> patentList = this.patentDao.searchPatentsByUserId(userId);
+        List<Patent> patentList = this.patentDao.searchPatentByHolder(userId);
         if(patentList.size() == 0 ||patentList == null){
             System.out.println("list为空");
             return null;
@@ -119,6 +135,7 @@ public class PatentBLServiceImpl implements PatentBLService {
         return voList;
     }
 
+    //获取池中专利
     @Override
     public List<PatentVO> searchPatentByPool(String poolId) {
         List<Patent> patentList = this.patentDao.searchRelatedPatents(poolId);
@@ -132,6 +149,7 @@ public class PatentBLServiceImpl implements PatentBLService {
         return voList;
     }
 
+    //Date搜专利
     @Override
     public List<PatentVO> searchPatentsByApplyDate(String StartDate, String endDate) {
         List<Patent> OriginList = this.patentDao.findAll();
@@ -160,6 +178,7 @@ public class PatentBLServiceImpl implements PatentBLService {
         return voList;
     }
 
+    //Region搜专利
     @Override
     public List<PatentVO> searchPatentByRegion(String region){
         List<Patent> patentList = this.patentDao.searchPatentsByRegion(region);
@@ -172,6 +191,8 @@ public class PatentBLServiceImpl implements PatentBLService {
                 .collect(Collectors.toList());
         return voList;
     }
+
+    //状态搜专利
     @Override
     public List<PatentVO> searchPatentsByState(Patent_state state){
         List<Patent> patentList = this.patentDao.searchPatentsByState(state);
@@ -253,6 +274,19 @@ public class PatentBLServiceImpl implements PatentBLService {
         }
         Patent patent = optionalPatent.get();
         patent.setState(newState);
+        Patent resultPatent = this.patentDao.saveAndFlush(patent);
+        return true;
+    }
+
+    //更新专利持有人holder
+    @Override
+    public Boolean updatePatentHolder(String newHolder, String patentID) throws IDNotExistsException {
+        Optional<Patent> optionalPatent = this.patentDao.findById(patentID);
+        if (!optionalPatent.isPresent()){
+            throw new IDNotExistsException("patent id not exists");
+        }
+        Patent patent = optionalPatent.get();
+        patent.setPatent_holder(newHolder);
         Patent resultPatent = this.patentDao.saveAndFlush(patent);
         return true;
     }

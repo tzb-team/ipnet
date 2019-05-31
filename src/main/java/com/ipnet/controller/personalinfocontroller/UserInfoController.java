@@ -31,21 +31,21 @@ public class UserInfoController {
     @Autowired
     private ElectronicWalletBLService electronicWalletBLService;
 
-    //修改个人用户
+    //修改个人用户信息
     @RequestMapping("/modifyPerson")
     public @ResponseBody
     ResultMessage savePersonalUserInfo(@RequestBody PersonalUserSaveVo personalUserSaveVo){
         return userBLService.savePersonalUserInfo(personalUserSaveVo);
     }
 
-    //修改企业用户
+    //修改企业用户信息
     @RequestMapping("/modifyCompany")
     public @ResponseBody
     ResultMessage saveCompanyUserInfo(@RequestBody CompanyUserSaveVo companyUserSaveVo){
         return userBLService.saveCompanyUserInfo(companyUserSaveVo);
     }
 
-    //身份信息查看
+    //身份信息查看（）
     @RequestMapping("/getUser")
     public @ResponseBody
     UserInfoVo getUserInfo(String userid,Role userType){
