@@ -184,7 +184,7 @@
 
                                 </a>
                                 <span style="position: absolute;left: 1170px;color: white;margin-top: 24px" class="mike"></span>
-                                <span style="position: absolute;left: 1450px;color: white;margin-top: 24px"><button id="new_wallet_address" class="new_wallet_address" style="width: 300px;height: 20px;">点击此处生成钱包地址</button></span>
+                                <span style="position: absolute;left: 1450px;color: white;margin-top: 24px"><button id="new_wallet_address" class="new_wallet_address" style="width: 300px;height: 20px;">查看钱包地址</button></span>
                                 <script  type="text/javascript">
                                     var btn=document.getElementById("new_wallet_address");
                                     var userId=localStorage.getItem("user_id");
@@ -203,13 +203,11 @@
                                                 var walletAddress=data;
                                                 console.log(walletAddress+"dd");
                                                 console.log("dd"+data);
-                                                var message="";
-                                                message+="确定生成钱包地址吗？";
-                                                var r=confirm(message);
-                                                if (r){
-                                                    var tex="已为"+localStorage.getItem("user_id")+"生成钱包地址："+"\n"+walletAddress;
+                                                // var message="";
+                                                // message+="确定生成钱包地址吗？";
+                                                // var r=confirm(message);
+                                                    var tex="您的账户"+localStorage.getItem("user_id")+"所拥有的钱包地址为："+"\n"+walletAddress;
                                                     alert(tex);
-                                                }
                                             }
                                         })
                                     };

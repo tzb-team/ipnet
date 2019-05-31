@@ -390,8 +390,13 @@
                                         balance=parseInt(balance)+parseInt(amount);
                                         localStorage.setItem("balance",parseInt(balance));
                                         console.log(balance);
-                                        setTimeout(showPoint(),2000);
+                                        var r=confirm("确定购买？")
+                                        if (r) {
+                                            setTimeout(showPoint(), 2000);
+                                        }
                                         CloseDiv();
+                                        setTimeout(alert("购买成功!"),2000);
+
                                     };
 
                                     function showPoint() {
