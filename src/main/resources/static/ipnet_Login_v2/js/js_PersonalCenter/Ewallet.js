@@ -158,10 +158,7 @@ function newBankCard() {
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest.status + ":" + XMLHttpRequest.statusText);
         }
-
     });
-
-
 }
 
 function cancelNewBankCard() {

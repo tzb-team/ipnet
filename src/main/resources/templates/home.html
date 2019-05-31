@@ -18,6 +18,10 @@
     <link rel="alternate" type="application/rss+xml" title="Newspaper X &raquo; Feed" href="https://colorlib.com/newspaper-x/feed/" />
     <link rel="alternate" type="application/rss+xml" title="Newspaper X &raquo; Comments Feed" href="https://colorlib.com/newspaper-x/comments/feed/" />
     <style type="text/css">
+        .new_wallet_address{
+            float: right;
+            width: auto;
+        }
         img.wp-smiley,
         img.emoji {
             display: inline !important;
@@ -177,38 +181,39 @@
                                 </a>
                                 <a href="javascript:void(0)" id="aPersonListPanel" class="tooltipped tooltipped__w" aria-label="您" style="position: absolute;left: 1140px;height: 27px;width: 27px;margin-top: 23px">
                                    <span class="avatar-small" style="background-image: url('https://i.imgur.com/ova4597.png')"></span>
-                                    <button id="new_wallet_address" >点击此处生成钱包地址</button>
-                                    <script  type="text/javascript">
-                                        var btn=document.getElementById("new_wallet_address");
-                                        btn.onclick=function (ev) {
-                                            // var r=confirm(
-                                            //     "确定生成钱包地址？"
-                                            // );
-                                            // if (r){
-                                            //     alert("已为"+localStorage.getItem("user_id")+"生成钱包地址：0x10Ad2F4BB73e23e8B72C56b9EFdc3B7aD8Bb808E");
-                                            // }
-                                            $.ajax({
-                                                type: "GET",
-                                                url: "/userInfo/getWalletAddressById",
-                                                data : {userid:userId},
 
-                                                success: function (data) {
-                                                    data=""
-                                                    var walletAddress=data;
-                                                    console.log(data);
-                                                    var message="";
-                                                    message+="确定生成钱包地址吗？";
-                                                    var r=confirm(message);
-                                                    if (r){
-                                                        var tex="已为"+username+"生成钱包地址："+"\n"+data;
-                                                        alert(tex);
-                                                    }
-                                                }
-                                            })
-                                        };
-                                    </script>
                                 </a>
                                 <span style="position: absolute;left: 1170px;color: white;margin-top: 24px" class="mike"></span>
+                                <span style="position: absolute;left: 1450px;color: white;margin-top: 24px"><button id="new_wallet_address" class="new_wallet_address" style="width: 300px;height: 20px;">点击此处生成钱包地址</button></span>
+                                <script  type="text/javascript">
+                                    var btn=document.getElementById("new_wallet_address");
+                                    var userId=localStorage.getItem("user_id");
+                                    btn.onclick=function (ev) {
+                                        // var r=confirm(
+                                        //     "确定生成钱包地址？"
+                                        // );
+                                        // if (r){
+                                        //     alert("已为"+localStorage.getItem("user_id")+"生成钱包地址：0x10Ad2F4BB73e23e8B72C56b9EFdc3B7aD8Bb808E");
+                                        // }
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "/userInfo/getWalletAddressById",
+                                            data : {userid:userId},
+                                            success: function (data) {
+                                                var walletAddress=data;
+                                                console.log(walletAddress+"dd");
+                                                console.log("dd"+data);
+                                                var message="";
+                                                message+="确定生成钱包地址吗？";
+                                                var r=confirm(message);
+                                                if (r){
+                                                    var tex="已为"+localStorage.getItem("user_id")+"生成钱包地址："+"\n"+walletAddress;
+                                                    alert(tex);
+                                                }
+                                            }
+                                        })
+                                    };
+                                </script>
                             </div>
                         </nav>
                     </div>

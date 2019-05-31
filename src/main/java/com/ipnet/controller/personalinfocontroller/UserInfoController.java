@@ -163,6 +163,7 @@ public class UserInfoController {
     ResultMessage cancelCreditCard(String uerId,String card,Role userType){
         return electronicWalletBLService.cancelCreditCard(uerId,card,userType);
     }
+
     //查看积分
     @RequestMapping("/getPoint")
     public @ResponseBody
@@ -170,12 +171,15 @@ public class UserInfoController {
         return electronicWalletBLService.getPoint(userId,userType);
     }
 
+
     //更新积分
     @RequestMapping("/updatePoint")
     public @ResponseBody
     ResultMessage updatePoint(String userId,int point,Role userType){
         return electronicWalletBLService.updatePoint(userId,point,userType);
     }
+
+
     //查看账户链上地址
     @RequestMapping("/getWalletAddressById")
     public @ResponseBody
